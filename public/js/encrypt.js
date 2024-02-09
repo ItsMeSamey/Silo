@@ -53,34 +53,7 @@ function decrypt(encryptedData, hashedPwd, useIV){
   return decryptedMessage;
 }
 
-function encryptFromText(){
-  useIV = document.querySelector("#useIVCheckBox").checked;
-  let clearText = document.querySelector("#clear_text").value;
-  let cleartext_pwd = document.querySelector("#password").value
-  let hashedPwd = sha256(cleartext_pwd);
-document.querySelector("#cleartext_output").innerHTML = "";
-
- document.querySelector("#cipher_output").innerHTML =  encrypt(clearText,hashedPwd,useIV);
-    generateHmac();
-}
-
-function decryptFromText(){
-  document.querySelector("#cleartext_output").innerHTML = "";
-  useIV = document.querySelector("#useIVCheckBox").checked;
-  let cleartext_pwd = document.querySelector("#password").value;
-
-  let hashedPwd = sha256(cleartext_pwd);
-  console.log(`hashedPwd: ${hashedPwd}`);
-  
-  // either get the cipher text from the input box or the div
-  let cipherText = document.querySelector("#cipher_text").value;
-  if (cipherText == ""){
-    cipherText = document.querySelector("#cipher_output").innerHTML;
-  }
-  console.log(cleartext_pwd);
-  document.querySelector("#cleartext_output").innerHTML = decrypt(cipherText,hashedPwd,useIV);
-}
-
+/*
 function generateHmac(){
   let cleartext_pwd = document.querySelector("#password").value;
   let encryptedData = document.querySelector("#cipher_output")
@@ -109,3 +82,4 @@ function validateMac(){
     console.log(`mac : ${mac}`);
     return (mac == Hmac);
 }
+*/

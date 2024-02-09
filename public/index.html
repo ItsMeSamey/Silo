@@ -12,9 +12,17 @@
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    <p>
+    <input type="file" id="fileInput" />
+    <p>
+    <button onclick=uploadFile()>Upload</button>
+    <p>
+    <button onclick=downloadFile()>Download</button>
+
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
     <script src="/js/work.js"></script>
+    <script src="/js/encrypt.js"></script>
     <script src="/js/auth.js"></script>
     
   </body>
