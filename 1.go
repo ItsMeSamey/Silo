@@ -7,7 +7,6 @@ import (
 func main() {
 	router := gin.Default()
 	router.MaxMultipartMemory = 8 << 20 // 8 MiB
-// 	router.Static("/js", "./js/")
 	router.Static("/", "./public")
 	router.Run("127.0.0.1:8080")
 }
