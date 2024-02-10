@@ -11,148 +11,19 @@
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
     <script src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js'></script>
+    <script src="testing only/docs/script.js"></script>
 </head>
 <body>
-<script>
-        function readFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const fileStream = e.target.result;
-                    // Now you have the file stream, you can do further processing
-                    console.log("File Stream:", fileStream);
-                };
-                reader.readAsText(file);
-            } else {
-                console.error("No file selected.");
-            }
-        }
-
-    let iv = null;
-let useIV = true;
-let Hmac = null;
-function encrypt(fileStream, hashedPwd, useIV){
-    if (useIV){
-      let randomBytes   = CryptoJS.lib.WordArray.random(128/8).toString();
-      //to generate random initialization vector value 
-      iv = CryptoJS.enc.Hex.parse(randomBytes);
-      console.log(`iv : ${iv}`);
-      // old method (wrong) which used first 16 bytes of key (hashed pwd)
-      // CryptoJS.enc.Hex.parse(key);
-      //encryption of message using aes256
-    message = CryptoJS.AES.encrypt(filestream, CryptoJS.enc.Hex.parse(hashedPwd),{iv: iv});
-    console.log(`message.iv : ${message.iv}`);
-    console.log(`message: ${message}`);
-    console.log(`message.ciphertext ${message.ciphertext}`);
-    console.log(`message.salt ${message.salt}`);
-    }
-  else{
-    message = CryptoJS.AES.encrypt(filestream, hashedPwd );
-  }
-  
-    return message.toString();
-}
-
-function decrypt(encryptedData, hashedPwd, useIV){
-  let code;  
-  if (useIV){
-    console.log(`hashedPwd: ${hashedPwd}`);
-    // we use original created iv
-    // we now use the original _random_ iv which
-    // is the correct way.  IV will be passed
-    // in the clear to decrypting side
-    // let iv = CryptoJS.enc.Hex.parse(key);
-    console.log(`iv ${iv}`);
-    code = CryptoJS.AES.decrypt(encryptedData, CryptoJS.enc.Hex.parse(hashedPwd),{iv:iv});
-    console.log(`code ${code}`);
-    //alert (typeof(code));
-    console.log(code);
-    }
-  else{
-    console.log("decrypting with no IV");
-    code = CryptoJS.AES.decrypt(encryptedData, hashedPwd);
-    console.log(code);
     
-  }
-  let decryptedMessage = "";
-  if (code.sigBytes < 0){
-    decryptedMessage = `Couldn't decrypt! It is probable that an incorrect password was used.`;
-    return decryptedMessage;
-  }
-  decryptedMessage = code.toString(CryptoJS.enc.Utf8);
-  return decryptedMessage;
-}
-
-function encryptFromText(){
-  useIV = document.querySelector("#useIVCheckBox").checked;
-  let cleartext_pwd = document.querySelector("#password").value
-  let hashedPwd = sha256(cleartext_pwd);
-document.querySelector("#cleartext_output").innerHTML = "";
-
- document.querySelector("#cipher_output").innerHTML =  encrypt(filestream,hashedPwd,useIV);
-    generateHmac();
-}
-
-function decryptFromText(){
-  document.querySelector("#cleartext_output").innerHTML = "";
-  useIV = document.querySelector("#useIVCheckBox").checked;
-  let cleartext_pwd = document.querySelector("#password").value;
-
-  let hashedPwd = sha256(cleartext_pwd);
-  console.log(`hashedPwd: ${hashedPwd}`);
-  
-  // either get the cipher text from the input box or the div
-  let cipherText = document.querySelector("#cipher_text").value;
-  if (cipherText == ""){
-    cipherText = document.querySelector("#cipher_output").innerHTML;
-  }
-  console.log(cleartext_pwd);
-  document.querySelector("#cleartext_output").innerHTML = decrypt(cipherText,hashedPwd,useIV);
-}
-
-function generateHmac(){
-  let cleartext_pwd = document.querySelector("#password").value;
-  let encryptedData = document.querySelector("#cipher_output")
-  let macKey = sha256(cleartext_pwd);
-  console.log(`key: ${macKey}`);
-  let hash = sha256.hmac(`${iv}:${encryptedData}`, macKey.toString());
-  Hmac = hash;
-  console.log(`mac : ${Hmac}`);
-  document.querySelector("#hmac").innerHTML = Hmac;
-}
-
-function validate(){
-    let output = "The MAC is valid.";
-    if (!validateMac()){
-      output = "The MAC is NOT valid!";
-    }
-    document.querySelector("#validated").innerHTML = output;
-  }
-
-function validateMac(){
-    // returns boolean (true if mac matches, otherwise false)
-    let cleartext_pwd = document.querySelector("#password").value;
-    let encryptedData = document.querySelector("#cipher_output")
-    let key = sha256(cleartext_pwd);
-    let mac = sha256.hmac(`${iv}:${encryptedData}`, key.toString());
-    console.log(`mac : ${mac}`);
-    return (mac == Hmac);
-}
-
-</script>
-<script src="js/script.js"></script>
-<script src="js/animtxt.js"></script>
-<script src="/js/auth.js"></script>
-<script src="/js/work.js"></script>
-<script src="testing only/docs/script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/animtxt.js"></script>
     <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
     <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
-
-    <!--Add buttons to initiate auth sequence and sign out-->
-    
-    <button onclick=downloadFile()>Download</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/work.js"></script>
+    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
     
@@ -167,7 +38,7 @@ function validateMac(){
             <br>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="home.html" class="nav-link active" aria-current="page">
+                    <a href="index.html" class="nav-link active" aria-current="page">
                         <div class="icon-wrap">
                             <i class="fas fa-home"></i>
                         </div>
@@ -184,6 +55,9 @@ function validateMac(){
                         <!-- Submenu content -->
                         <ul class="submenu-content">
                             <li><a href="photo.html">Photos</a></li>
+                            <li><a href="docs.html">Documents</a></li>
+                            <li><a href="videos.html">Videos</a></li>
+                            <li><a href="audio.html">Audio</a></li>
                         </ul>
                     </a>
                 </li>
@@ -191,14 +65,12 @@ function validateMac(){
                 <br>
                 <li>
                     <!-- Add data-bs-toggle and data-bs-target to open modal -->
-                  
-                    <button class="nav-link" data-bs-toggle="modal" data-bs-target="#uploadModal" type="submit" class="btn-btn-primary-btn-lg" onclick=uploadFile()>
+                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#uploadModal">
                         <div class="icon-wrap">
                             <i class="fa fa-plus-square"></i>
                         </div>
-                        <span style="width: 100%;padding-right: 120px;">Upload</span>
-                    </button>
-
+                        <span>Upload</span>
+                    </a>
                 </li>
             </ul>
             <hr>
@@ -212,7 +84,7 @@ function validateMac(){
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                     </li>
-                    <li><button class="dropdown-item" id="signout_button" onclick="handleSignoutClick()">Sign Out</button></li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
                 </ul>
             </div>
         </div>
@@ -234,10 +106,10 @@ function validateMac(){
                 <!-- Example: -->
                 <form>
                     <div class="mb-3">
-                      <br>
+                        <br>
                         <input type="file" class="form-control" id="fileInput">
                     </div>
-                    <button type="submit" class="btn-btn-primary-btn-lg" onclick=uploadFile()>Upload</button>
+                    <button type="submit" class="btn-btn-primary-btn-lg" onclick="uploadFile()">Upload</button>
                 </form>
             </div>
         </div>
@@ -250,28 +122,63 @@ function validateMac(){
     <div class="cards">
         
         
-        <div style="margin-left: 310px;" class="card">
+        <div class="card">
             <img src="pexels-samer-daboul-1226721.jpg" alt="Card Image">
-            <h1>Files</h1>
+            <h3>adskjadsjkasdjk</h3>
+            <h1>Photos</h1>
             <p>Enjoy your memories in the photos section!</p>
-            <button onclick="handleAuthClick()">
-                <div class="icon-wrap">
-                    <i class="fa fa-plus-square"></i>
-                </div>
-                <span>encrypt</span></button>
-            </button>
-                 <button class="nav-link" data-bs-toggle="modal" data-bs-target="#uploadModal" type="submit" class="btn-btn-primary-btn-lg" onclick="uploadFile()">
-                        <div class="icon-wrap">
-                            <i class="fa fa-plus-square"></i>
-                        </div>
-                        <span>Upload</span>
-                    </button>
+            <a href="photo.html"  >
+                <button class="show-more">Show More →</button>
+            </a>
             
         </div>
-        
+        <div class="card">
+            <img src="vid.jpg" alt="Card Image">
+            <h3>Card 3</h3>
+            <h1>Videos</h1>
+            <p>View the visualistic glimpse of your moments!</p>
+            <a href="videos.html" >
+                <button class="show-more">Show More →</button>
+            </a>
+        </div>
+        <div class="card">
+            <img src="doc.jpg" alt="Card Image">
+            <h3>Card 4</h3>
+            <br>
+            <h1>Documents</h1>
+            <p>View your potential documents here.</p>
+            <br>
+            <a href="docs.html" >
+                <button class="show-more">Show More →</button>
+            </a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+<div class="container">
+    
+
+  <div class="bottom-bar">
+    <div class="characteristics">
+      <div class="characteristic">
+        <span class="label">Data Protected</span>
+        <span class="value">85%</span>
+      </div>
+      <div class="characteristic">
+        <span class="label">Photos Uploaded</span>
+        <span class="value">70%</span>
+      </div>
+      <div class="characteristic">
+        <span class="label">Pictures Uploaded</span>
+        <span class="value">60%</span>
+      </div>
+    </div id="uploadBox">
+    <button id="uploadButton"  style="font-size: 40px;z-index: 10000000;" data-bs-toggle="modal" data-bs-target="#uploadModal">+</button>
+  </div>
+  </div>
   
   
 
 </body>
 </html>
-

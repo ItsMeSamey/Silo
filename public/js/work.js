@@ -56,14 +56,18 @@ async function makeFolder() {
 
 async function uploadFile() {
   const fileInput = document.getElementById('fileInput');
+  console.log(file);
   let file = fileInput.files[0];
+  console.log(file);
   if (file) {
 
     const hashedPwd = CryptoJS.SHA256(CryptoJS.lib.WordArray.random(256).toString()).toString();
     FS['hash'] = hashedPwd;
     file = await file.text();
+    console.log(file);
 
     file =  encrypt(file, hashedPwd, false);
+    console.log(file);
 
     var metadata = {
       'mimeType': 'text/plain',
