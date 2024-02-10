@@ -7,7 +7,6 @@
 - [Features](#features)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [License](#license)
 - [Contact](#contact)
 
 ## Introduction
