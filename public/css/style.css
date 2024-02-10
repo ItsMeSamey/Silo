@@ -6,6 +6,7 @@
 .sidebar-wrap {
  width: 60px;
  z-index: 10000000;
+ top: 0;
  
  height: 100vh;
  background-color: #333;
@@ -169,8 +170,6 @@
 }
 
 body {
-  overflow-x: hidden;
-  overflow-y: hidden;
  background-color: black !important;
 }
 
@@ -270,6 +269,7 @@ logo-wrap {
 }
 .container {
   padding: 20px;
+  display: flex;
 }
 
 .bottom-bar {
@@ -372,7 +372,7 @@ logo-wrap {
 
 .maincont{
   position: fixed;
-  top: 0;
+  top: 0 !important;
   left: 300px;
 width: 1000px !important;
   height: auto;
@@ -384,11 +384,15 @@ width: 1000px !important;
 }
 
 .indmain{
+  position: fixed;
+  top: 0 !important;
+  left: 250px;
+width: 1000px !important;
+  height: auto;
+  padding: 20px;
+  color: white;
+  padding-top: 100px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 100px;
 }
 
 
@@ -419,7 +423,7 @@ width: 1000px !important;
   display: flex;
   justify-content: right;
   flex-wrap: wrap;
-  height: 300px;
+  height: 500px;
   margin-top: 60px;
   width: 94%;
   margin-right: 10px;

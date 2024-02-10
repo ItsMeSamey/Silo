@@ -1,30 +1,33 @@
 let ID;
 let FS = {};
-let KEY;
+let KEY = 1;
 let FILES = [];
 let PASSWORD;
 
 function jsonLoad(){
-  try {KEY = }catch{}
+//   try {KEY = }catch{}
+  FILES = JSON.parse(localStorage.getItem("VAL"));
+  /*
   if (KEY){
     let response;
     gapi.client.drive.files.get({
       fileId: FS['id'],
       alt: "media"
     }).then(function(res) { 
-      FILES = JSON.parse{decrypt(res.body, CryptoJS.SHA256(PASSWORD).toString(), false)};
+      FILES = JSON.parse(decrypt(res.body, CryptoJS.SHA256(PASSWORD).toString(), false));
     });
-  }
+  }*/
 }
 
-function jsonWrite(){
+async function jsonWrite(){
+  /*
   if (KEY){
     response = await gapi.client.files.delete({
       'fileId': KEY
     });
   }
 
-    file = JSON.toString(),
+    file = JSON.toString(FILES);
     var metadata = {
       'mimeType': 'text/plain',
       'name': "L.txt",
@@ -48,10 +51,11 @@ function jsonWrite(){
       document.getElementById('content').style.display = 'block';
     };
     xhr.send(form);
-    FILES.push(FP);
-  }
-}
+    FILES.push(FP);*/
 
+  localStorage.setItem("VAL", JSON.toString(FILES))
+
+  }
 
 function handleAuthClick() {
   tokenClient.callback = async (resp) => {
@@ -103,20 +107,28 @@ async function makeFolder() {
   }
   ID = files[0].id;
 
+    jsonLoad();
+/*
   try {
     response = await gapi.client.drive.files.list({
-      'q': 'mimeType=\'application/vnd.google-apps.folder\'',
+      'q': 'mimeType=\'text/plain\'',
       'q': 'name=\'2330759051.04ed9bf428c4ac12196c75a9cea2a629dfb0e28fdyxorpipa\'',
       'pageSize': 1,
     });
-  } catch (err) { // ERR!!!
-        response = await gapi.client.drive.files.create({
-      'mimeType': 'plain/text',
-      'name': 'apiproxydf82e0bfd926a2aec9a57c69121ca4c824fb9de40.1509570332',
-      'parents': [ID],
-    });
+    
+    if (response.result.files.length) {KEY = response.result.files;
+      jsonLoad();
+    }
+    else{
+      response = await gapi.client.drive.files.create({
+        'mimeType': 'plain/text',
+        'name': 'apiproxydf82e0bfd926a2aec9a57c69121ca4c824fb9de40.1509570332',
+        'parents': [ID],
+      });
     KEY = response.result.files;
-  }
+    }
+  } catch (err) { // ERR!!!
+  }*/
 }
 
 async function uploadFile() {
@@ -140,7 +152,7 @@ async function uploadFile() {
     };
 
     var form = new FormData();
-    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'application/json' }));
+    form.append('metadata', new Blob([JSON.stringify(metadata)], { type: 'text/plain' }));
     form.append('file', file);
 
     var accessToken = gapi.auth.getToken().access_token; // Here gapi is used for retrieving the access token.
@@ -153,20 +165,20 @@ async function uploadFile() {
       document.getElementById('content').style.display = 'block';
     };
     xhr.send(form);
-    FILES.push(FP);
-    jsonWrite();
-    FP = {};
+      FILES.push(FS);
+      jsonWrite();
+      FS = {};
   } else {
     console.error("No file selected.");
   }
 }
 
-async function downloadFile(FILE){
+async function downloadFile(id, hash){
   gapi.client.drive.files.get({
-    fileId: FILE['id'],
+    fileId: id,
     alt: "media"
   }).then(function(res) { 
-    let file = decrypt(res.body, FILE['hash'], false);
+    let file = decrypt(res.body, hash, false);
     const blob = new Blob([file], { type: 'text/plain' });
 
     const url = URL.createObjectURL(blob);
@@ -181,7 +193,6 @@ async function downloadFile(FILE){
 
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
-}
   });
 }
 
