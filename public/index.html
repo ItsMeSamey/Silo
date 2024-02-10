@@ -24,7 +24,7 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
+    
     <button onclick=downloadFile()>Download</button>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
@@ -67,12 +67,13 @@
                 <br>
                 <li>
                     <!-- Add data-bs-toggle and data-bs-target to open modal -->
-                    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#uploadModal">
+                    <button class="nav-link" data-bs-toggle="modal" data-bs-target="#uploadModal" type="submit" class="btn-btn-primary-btn-lg" onclick=uploadFile()>
                         <div class="icon-wrap">
                             <i class="fa fa-plus-square"></i>
                         </div>
                         <span>Upload</span>
-                    </a>
+                    </button>
+
                 </li>
             </ul>
             <hr>
@@ -86,7 +87,7 @@
                 </a>
                 <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><button class="dropdown-item" id="signout_button" onclick="handleSignoutClick()">Sign Out</button></li>
                 </ul>
             </div>
         </div>
