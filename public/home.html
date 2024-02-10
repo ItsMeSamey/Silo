@@ -1,6 +1,17 @@
 <!DOCTYPE html>
+<script>
+  // dynamo page switching
+  async function dyload(url){
+    const response = await fetch('http://127.0.0.1:8080/'+url);
+    const data = await response.text();
+    console.log(data);
+    document.lastChild.innerHTML = data;
+  }
+</script>
+<div>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="CodeHim">
@@ -38,7 +49,7 @@
             <br>
             <ul class="nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="index.html" class="nav-link active" aria-current="page">
+                    <a onclick='dyload("index.html")' class="nav-link active" aria-current="page">
                         <div class="icon-wrap">
                             <i class="fas fa-home"></i>
                         </div>
@@ -54,10 +65,10 @@
                         <i class="fa fa-chevron-down submenu-arrow"></i>
                         <!-- Submenu content -->
                         <ul class="submenu-content">
-                            <li><a href="photo.html">Photos</a></li>
-                            <li><a href="docs.html">Documents</a></li>
-                            <li><a href="videos.html">Videos</a></li>
-                            <li><a href="audio.html">Audio</a></li>
+                            <li><a onclick='dyload("photo.html")'>Photos</a></li>
+                            <li><a onclick='dyload("docs.html")'>Documents</a></li>
+                            <li><a onclick='dyload("videos.html")'>Videos</a></li>
+                            <li><a onclick='dyload("audio.html")'>Audio</a></li>
                         </ul>
                     </a>
                 </li>
@@ -124,31 +135,31 @@
         
         <div class="card">
             <img src="pexels-samer-daboul-1226721.jpg" alt="Card Image">
-            <h3>adskjadsjkasdjk</h3>
+            <h3>             </h3>
             <h1>Photos</h1>
             <p>Enjoy your memories in the photos section!</p>
-            <a href="photo.html"  >
+            <a onclick='dyload("photo.html")'  >
                 <button class="show-more">Show More →</button>
             </a>
             
         </div>
         <div class="card">
             <img src="vid.jpg" alt="Card Image">
-            <h3>Card 3</h3>
+            <h3>            </h3>
             <h1>Videos</h1>
             <p>View the visualistic glimpse of your moments!</p>
-            <a href="videos.html" >
+            <a onclick='dyload("videos.html")' >
                 <button class="show-more">Show More →</button>
             </a>
         </div>
         <div class="card">
             <img src="doc.jpg" alt="Card Image">
-            <h3>Card 4</h3>
+            <h3>             </h3>
             <br>
             <h1>Documents</h1>
             <p>View your potential documents here.</p>
             <br>
-            <a href="docs.html" >
+            <a onclick='dyload("docs.html")' >
                 <button class="show-more">Show More →</button>
             </a>
         </div>
@@ -182,3 +193,4 @@
 
 </body>
 </html>
+</div>
