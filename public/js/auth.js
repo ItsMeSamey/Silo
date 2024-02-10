@@ -43,7 +43,7 @@ async function initializeGapiClient() {
     gapi.client.setToken(localStorage.getItem("google_token"));
     }
   }
-}
+
 
 /**
   * Callback after Google Identity Services are loaded.
