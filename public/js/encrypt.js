@@ -3,21 +3,21 @@ let useIV = true;
 let Hmac = null;
 function encrypt(clearTextData, hashedPwd, useIV){
     if (useIV){
-      let randomBytes   = CryptoJS.lib.WordArray.random(128/8).toString();
+      let randomBytes = CryptoJS.lib.WordArray.random(128/8).toString();
       //to generate random initialization vector value 
       iv = CryptoJS.enc.Hex.parse(randomBytes);
-      console.log(`iv : ${iv}`);
+//       console.log(`iv : ${iv}`);
       // old method (wrong) which used first 16 bytes of key (hashed pwd)
       // CryptoJS.enc.Hex.parse(key);
       //encryption of message using aes256
     message = CryptoJS.AES.encrypt(clearTextData, CryptoJS.enc.Hex.parse(hashedPwd),{iv: iv});
-    console.log(`message.iv : ${message.iv}`);
-    console.log(`message: ${message}`);
-    console.log(`message.ciphertext ${message.ciphertext}`);
-    console.log(`message.salt ${message.salt}`);
+//     console.log(`message.iv : ${message.iv}`);
+//     console.log(`message: ${message}`);
+//     console.log(`message.ciphertext ${message.ciphertext}`);
+//     console.log(`message.salt ${message.salt}`);
     }
   else{
-    message = CryptoJS.AES.encrypt(clearTextData, hashedPwd );
+    message = CryptoJS.AES.encrypt(clearTextData, hashedPwd);
   }
   
     return message.toString();
@@ -26,22 +26,22 @@ function encrypt(clearTextData, hashedPwd, useIV){
 function decrypt(encryptedData, hashedPwd, useIV){
   let code;  
   if (useIV){
-    console.log(`hashedPwd: ${hashedPwd}`);
+//     console.log(`hashedPwd: ${hashedPwd}`);
     // we use original created iv
     // we now use the original _random_ iv which
     // is the correct way.  IV will be passed
     // in the clear to decrypting side
     // let iv = CryptoJS.enc.Hex.parse(key);
-    console.log(`iv ${iv}`);
+//     console.log(`iv ${iv}`);
     code = CryptoJS.AES.decrypt(encryptedData, CryptoJS.enc.Hex.parse(hashedPwd),{iv:iv});
-    console.log(`code ${code}`);
+//     console.log(`code ${code}`);
     //alert (typeof(code));
-    console.log(code);
+//     console.log(code);
     }
   else{
-    console.log("decrypting with no IV");
+//     console.log("decrypting with no IV");
     code = CryptoJS.AES.decrypt(encryptedData, hashedPwd);
-    console.log(code);
+//     console.log(code);
     
   }
   let decryptedMessage = "";

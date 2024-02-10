@@ -1,5 +1,5 @@
 let ID;
-let FS;
+let FS = {};
 
 function handleAuthClick() {
   tokenClient.callback = async (resp) => {
@@ -40,7 +40,7 @@ async function makeFolder() {
   }
 
   var files = response.result.files;
-  console.log(files);
+//   console.log(files);
 
   if (!files || files.length == 0) {
     response = await gapi.client.drive.files.create({
@@ -59,19 +59,22 @@ async function makeFolder() {
 
 async function uploadFile() {
   const fileInput = document.getElementById('fileInput');
-  const file = fileInput.files[0];
+  let file = fileInput.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const fileStream = new Uint8Array(e.target.result);
+//     const reader = new FileReader();
+//     reader.onload = function(e) {
+//       const fileStream = e.target.result;
 //       console.log("File Stream:", fileStream);
-    };
-    reader.readAsArrayBuffer(file);
+//     };
+//     reader.reader.readAsBinaryString(file);
     //Encrypt{
-    useIV = document.querySelector("#useIVCheckBox").checked;
-    let cleartext_pwd = document.querySelector("#password").value
-    let hashedPwd = sha256(cleartext_pwd);
-    document.querySelector("#cipher_output").innerHTML =  encrypt(file.stream(), hashedPwd, useIV);
+      //    const hashedPwd = CryptoJS.SHA256(CryptoJS.lib.WordArray.random(256).toString()).toString();
+
+    const hashedPwd = CryptoJS.SHA256(CryptoJS.lib.WordArray.random(256).toString()).toString();
+    FS['hash'] = hashedPwd;
+    file = await file.text();
+//     console.log(FS);
+    file =  encrypt(file, hashedPwd, false);
 //    generateHmac();
     // }Encrypt
 //     ID = ID.toString();
@@ -81,7 +84,7 @@ async function uploadFile() {
       'uploadType': 'media',
       'parents': [ID],
       'useContentAsIndexableText': false,
-      'body': file.stream(),
+      'body': file,
     };
 
     var form = new FormData();
@@ -94,7 +97,7 @@ async function uploadFile() {
     xhr.setRequestHeader('Authorization', 'Bearer ' + accessToken);
     xhr.responseType = 'json';
     xhr.onload = () => {
-      FS = xhr.response.id;
+      FS['id'] = xhr.response.id;
       document.getElementById('content').style.display = 'block';
     };
     xhr.send(form);
@@ -105,27 +108,21 @@ async function uploadFile() {
 
 async function downloadFile(){
   gapi.client.drive.files.get({
-    fileId: FS,
+    fileId: FS['id'],
     alt: "media"
   }).then(function(res) { 
-    console.log("XO");
-    document.querySelector("#cleartext_output").innerHTML = "";
-  useIV = document.querySelector("#useIVCheckBox").checked;
-  let cleartext_pwd = document.querySelector("#password").value;
-
-  let hashedPwd = sha256(cleartext_pwd);
-  console.log(`hashedPwd: ${hashedPwd}`);
+//     console.log("XO");
+//   document.querySelector("#cleartext_output").innerHTML = "";
+//   console.log(`hashedPwd: ${FS['hash']}`);
   
   // either get the cipher text from the input box or the div
-  let cipherText = document.querySelector("#cipher_text").value;
-  if (cipherText == ""){
-    cipherText = document.querySelector("#cipher_output").innerHTML;
-  }
-  console.log(cleartext_pwd);
-  document.querySelector("#cleartext_output").innerHTML = decrypt(cipherText,hashedPwd,useIV);
-
-
-    console.log(res.body);
+//   let cipherText = document.querySelector("#cipher_text").value;
+//   if (cipherText == ""){
+//     cipherText = document.querySelector("#cipher_output").innerHTML;
+//   }
+//   console.log(cleartext_pwd);
+    let file = decrypt(res.body, FS['hash'], false);
+//     console.log(ll);
   });
 }
 
