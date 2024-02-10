@@ -2,24 +2,19 @@ let ID;
 let FS = {};
 
 function handleAuthClick() {
-  if (localStorage.getItem("google_token")){
-    if (localStorage.getItem("google_token")){
-      gapi.client.setToken(localStorage.getItem("google_token"));
-      return;
-    }
-  }
   tokenClient.callback = async (resp) => {
     if (resp.error !== undefined) {
       throw (resp);
     }
     await makeFolder();
+//    localStorage.setItem("google_token", gapi.client.getToken().access_token);
+//     document.location.href = '/home.html';
   };
   if (gapi.client.getToken() === null) {
     tokenClient.requestAccessToken({ prompt: 'consent' });
   } else {
     tokenClient.requestAccessToken({ prompt: '' });
   }
-  localStorage.setItem("google_token", gapi.client.getToken());
 }
 
 

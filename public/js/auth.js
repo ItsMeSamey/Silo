@@ -38,13 +38,14 @@ function gapiLoaded() {
       discoveryDocs: [DISCOVERY_DOC],
     });
     gapiInited = true;
-    maybeEnableButtons();
-    if (localStorage.getItem("google_token")){
+    if (localStorage.getItem("google_token") != 'reg'){
       if (localStorage.getItem("google_token").length > 6){
         gapi.client.setToken(localStorage.getItem("google_token"));
       }
-    } else{
-      document.location.href = 'http://localhost:8080/index.html';
+      else if (localStorage.getItem("google_token") == 'reg'){
+        localStorage.setItem("google_token", 'null');
+        document.location.href = 'http://localhost:8080/index.html';
+      }
     }
   }
 
@@ -59,16 +60,7 @@ function gisLoaded() {
     callback: '', // defined later
   });
   gisInited = true;
-  maybeEnableButtons();
 }
 
-/**
-  * Enables user interaction after all libraries are loaded.
-  */
 
-function maybeEnableButtons() {
-  if (gapiInited && gisInited) {
-    document.getElementById('authorize_button').style.visibility = 'visible';
-  }
-}
 
