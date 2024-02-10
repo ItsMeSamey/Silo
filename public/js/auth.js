@@ -32,15 +32,19 @@ function gapiLoaded() {
   * Callback after the API client is loaded. Loads the
   * discovery doc to initialize the API.
   */
-async function initializeGapiClient() {
-  await gapi.client.init({
-    apiKey: API_KEY,
-    discoveryDocs: [DISCOVERY_DOC],
-  });
-  gapiInited = true;
-  maybeEnableButtons();
-  if (localStorage.getItem("google_token") != ''){
-    gapi.client.setToken(localStorage.getItem("google_token"));
+  async function initializeGapiClient() {
+    await gapi.client.init({
+      apiKey: API_KEY,
+      discoveryDocs: [DISCOVERY_DOC],
+    });
+    gapiInited = true;
+    maybeEnableButtons();
+    if (localStorage.getItem("google_token")){
+      if (localStorage.getItem("google_token").length > 6){
+        gapi.client.setToken(localStorage.getItem("google_token"));
+      }
+    } else{
+      document.location.href = 'http://localhost:8080/index.html';
     }
   }
 }

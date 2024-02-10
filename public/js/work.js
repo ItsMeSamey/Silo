@@ -2,13 +2,12 @@ let ID;
 let FS = {};
 
 function handleAuthClick() {
-  let done = false;
-  if (gapi.client.getToken() != ''){done = true;
-  }else if (localStorage.getItem("google_token") != ''){
-    gapi.client.setToken(localStorage.getItem("google_token"));
-    done = true;
+  if (localStorage.getItem("google_token")){
+    if (localStorage.getItem("google_token")){
+      gapi.client.setToken(localStorage.getItem("google_token"));
+      return;
+    }
   }
-  if (done){document.location.href = '/home.html';return;}
   tokenClient.callback = async (resp) => {
     if (resp.error !== undefined) {
       throw (resp);
