@@ -1,0 +1,480 @@
+
+.cd__main{
+  position: relative;
+  display: block !important;
+}
+.sidebar-wrap {
+ width: 60px;
+ z-index: 10000000;
+ 
+ height: 100vh;
+ background-color: #333;
+ color: #000;
+ padding: 10px;
+ transition: 1s;
+}
+.sidebar-wrap:hover {
+ width: 240px;
+}
+.sidebar-wrap:hover .logo-wrap span {
+ display: flex;
+}
+.sidebar-wrap:hover .nav li .nav-link span {
+ display: flex;
+}
+.sidebar-wrap:hover .dropdown-wrap strong {
+ display: flex;
+}
+.sidebar-wrap:hover .dropdown-wrap::after {
+ display: inline-block;
+}
+.sidebar-wrap:hover .dropdown-wrap {
+ justify-content: flex-start;
+}
+.sidebar-wrap .logo-wrap {
+ color: #fff;
+ font-size: 35px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+.sidebar-wrap .logo-wrap span {
+ font-size: 18px;
+}
+.sidebar-wrap .logo-wrap .icon-wrap {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 40px;
+ min-width: 40px;
+}
+.sidebar-wrap .nav {
+ height: 100%;
+ overflow-x: hidden;
+ overflow-y: auto;
+ flex-wrap: nowrap;
+}
+.sidebar-wrap .nav::-webkit-scrollbar-track {
+ -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+ border-radius: 5px;
+ background-color: #f5f5f5;
+}
+.sidebar-wrap .nav::-webkit-scrollbar {
+ width: 5px;
+ background-color: #f5f5f5;
+ border-radius: 5px;
+}
+.sidebar-wrap .nav::-webkit-scrollbar-thumb {
+ border-radius: 5px;
+ -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+ background-color: #9b9b9b;
+}
+.sidebar-wrap .nav li {
+ margin-top: 5px;
+}
+.sidebar-wrap .nav li .nav-link {
+ color: #fff;
+ padding: 0;
+ font-size: 20px;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+}
+.sidebar-wrap .nav li .nav-link .icon-wrap {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 40px;
+ min-width: 40px;
+}
+.sidebar-wrap .nav li .nav-link span {
+ font-size: 16px;
+}
+.sidebar-wrap .nav li .nav-link.active {
+ background-color: #ffa200;
+}
+.sidebar-wrap .nav li .nav-link:hover {
+ background-color: #ffa200;
+}
+.sidebar-wrap .dropdown-wrap {
+ display: flex;
+ align-items: center;
+ color: #fff;
+ gap: 15px;
+ font-size: 16px;
+}
+.sidebar-wrap .dropdown-wrap .icon-wrap {
+ min-width: 40px;
+ height: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.btn-btn-primary-btn-lg {
+  background-color: #ffa200;
+  color: #fff;
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 12px;
+  width: 80%;
+  margin-left: 45px;
+  font-size: 18px;
+  cursor: pointer;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  z-index: 2;
+}
+
+.btn-btn-primary-btn-lg:hover {
+ background-color: #000000;
+ color: #fff;
+}
+
+
+
+
+.dropdown-menu {
+ background-color: white;
+ width: 100%;
+ border: none;
+ padding: 10px; /* Adjust padding as needed */
+ border-radius: 5px; /* Add rounded corners */
+ box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.dropdown-item {
+ color: #333; /* Dark text color */
+ transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.dropdown-item:hover {
+ color: #ffa200;
+ background-color: black;
+}
+
+.dropdown-divider {
+ border-top: 1px solid #ccc; /* Gray divider */
+}
+
+.dropdown-toggle {
+ color: #333; /* Dark text color */
+ font-weight: bold; /* Bold font for toggle */
+ text-decoration: none; /* Remove underline */
+}
+
+.dropdown-toggle:hover {
+ color: #ffa200;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+ background-color: black !important;
+}
+
+logo-wrap {
+ color: #fff;
+ font-size: 35px;
+ display: block; /* Change display property to block */
+ align-items: center;
+ gap: 10px;
+ transition: 0.8s; /* Add transition for smooth animation */
+}
+
+.logo-wrap span {
+ font-size: 18px;
+ display: none; /* Hide span by default */
+}
+
+.dropdown-wrap {
+ display: block; /* Change display property to block */
+ color: #fff;
+ gap: 15px;
+ font-size: 16px;
+ transition: 0.8s; /* Add transition for smooth animation */
+}
+
+.dropdown-wrap strong {
+ display: none; /* Hide strong tag by default */
+}
+
+.sidebar-wrap:hover .dropdown-wrap {
+ display: flex; /* Change display property to flex on hover */
+}
+
+.sidebar-wrap:hover .logo-wrap {
+ display: flex; /* Change display property to flex on hover */
+}
+
+
+.submenu-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  padding: 10px;
+  width: 150px; /* Adjust submenu width */
+  z-index: 1;
+}
+
+.submenu-content a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+  padding-left: 30px;
+}
+
+.submenu-content a:hover {
+  color: #ffa200;
+}
+
+.submenu:hover .submenu-content {
+  display: block;
+}
+
+.submenu-content li {
+  list-style-type: none;
+}
+
+.uploadBox{
+  background-color: #ffa200;
+  color: #fff;
+  
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  padding-right: 50px;
+  padding: 20px;
+  width: 10px;
+  height: 50px;
+  transition: background-color 0.6s ease;
+}
+#uploadButton {
+  justify-content: center;
+  align-items: center;
+  background-color: #ffa200;  
+  color: #fff;
+  border: none;
+  border-radius: 15px; /* Adjust the border radius */
+  padding: 10px 20px; /* Adjust the padding */
+  cursor: pointer;
+  width: fit-content; /* Set width to fit the content */
+  margin-right: 20px;
+  transition: background-color 0.6s ease;
+}
+#uploadButton:hover {
+  background-color: #000000;
+  color: #ffa200;
+}
+.container {
+  padding: 20px;
+}
+
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 150px;
+  width: 90%;
+  background-color: transparent;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.characteristics {
+  padding-left: 400px;
+  display: flex;
+}
+
+.characteristic {
+  margin-right: 20px;
+}
+
+#uploadContent {
+  position: fixed;
+  bottom: 70px;
+  right: 20px;
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.upload-options {
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+#uploadForm {
+  display: flex;
+  flex-direction: column;
+}
+
+
+#fileUpload {
+  display: none;
+}
+
+/* Style the custom file upload button */
+.custom-file-upload {
+  padding: 10px;
+  background-color: #ffa200;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+
+
+.upload-options.hidden {
+  display: none;
+}
+
+#uploadOptions {
+  margin-top: 20px;
+}
+
+
+#submit-btn {
+  background-color: black;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: fit-content; /* Set width to fit the content */
+  margin: 0 auto; /* Center the button horizontally */
+  transition: background-color 0.6s ease;
+}
+
+#submit-btn:hover {
+  background-color: #ffa200;
+}
+
+.maincont{
+  position: fixed;
+  top: 0;
+  left: 300px;
+width: 1000px !important;
+  height: auto;
+  padding: 20px;
+  color: white;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+}
+
+.indmain{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+
+
+.brand {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 114px;
+  font-weight: bold;
+  color: #fff; /* Changed brand color to white */
+}
+
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  color: #fff; /* Changed top-right text color to white */
+}
+
+.sidebar{
+  position: fixed;
+    
+}
+
+.cards {
+  display: flex;
+  justify-content: right;
+  flex-wrap: wrap;
+  height: 500px;
+  margin-top: 60px;
+  width: 94%;
+  margin-right: 10px;
+  bottom: 80px; /* Increased margin-top for better spacing */
+}
+
+.card {
+  width: 22%;
+  background-color: #333; /* Darkened card background color */
+  border-radius: 8px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: transform 0.7s ease; /* Added transition for hover effect */
+}
+
+.card:hover {
+  transform: translateY(-15px); /* Added hover effect to move card slightly up */
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Added border radius to image */
+  margin-bottom: 10px; /* Added margin bottom to image */
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #fff;
+}
+
+.card p {
+  color: #ccc; /* Adjusted paragraph text color */
+}
+
+.show-more {
+  width: 100%;
+  margin-top: 100px;
+  padding: 10px;
+  background-color: #ffa200;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.show-more:hover {
+  background-color: black; /* Darkened hover background color */
+}
+
+.drawer {
+  position: fixed;
+  z-index: 1000;
+}

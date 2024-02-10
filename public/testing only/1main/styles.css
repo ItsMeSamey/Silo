@@ -1,0 +1,82 @@
+
+.brand {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 114px;
+    font-weight: bold;
+    color: #fff; /* Changed brand color to white */
+}
+
+.top-right {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 18px;
+    color: #fff; /* Changed top-right text color to white */
+}
+
+
+
+.cards {
+    display: flex;
+    z-index: 1;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    position: fixed;
+    z-index: 100;
+    width: 80%;
+    right: 20px;
+    height: 300px;
+    margin-top: 60px;
+    margin-right: 10px;
+    bottom: 350px; /* Increased margin-top for better spacing */
+}
+
+.card {
+    width: 30%;
+    background-color: #333; /* Darkened card background color */
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    transition: transform 0.7s ease; /* Added transition for hover effect */
+}
+
+.card:hover {
+    transform: translateY(-15px); /* Added hover effect to move card slightly up */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Added border radius to image */
+    margin-bottom: 10px; /* Added margin bottom to image */
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #fff;
+}
+
+.card p {
+    color: #ccc; /* Adjusted paragraph text color */
+}
+
+.show-more {
+    width: 100%;
+    margin-top: 100px;
+    padding: 10px;
+    background-color: #ffa200;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.show-more:hover {
+    background-color: black; /* Darkened hover background color */
+}
