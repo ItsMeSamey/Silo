@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const uploadButton = document.getElementById('uploadButton');
+Name
     const uploadContent = document.getElementById('uploadContent');
     const closeButton = document.getElementById('closeButton');
     const uploadForm = document.getElementById('uploadForm');

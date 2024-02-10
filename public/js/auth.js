@@ -18,12 +18,12 @@ let tokenClient;
 let gapiInited = false;
 let gisInited = false;
 
-document.getElementById('authorize_button').style.visibility = 'hidden';
-document.getElementById('signout_button').style.visibility = 'hidden';
 
 /**
   * Callback after api.js is loaded.
   */
+
+
 function gapiLoaded() {
   gapi.load('client', initializeGapiClient);
 }
@@ -39,6 +39,10 @@ async function initializeGapiClient() {
   });
   gapiInited = true;
   maybeEnableButtons();
+  if (localStorage.getItem("google_token") != ''){
+    gapi.client.setToken(localStorage.getItem("google_token"));
+    }
+  }
 }
 
 /**

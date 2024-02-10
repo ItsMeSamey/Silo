@@ -2,12 +2,17 @@ let ID;
 let FS = {};
 
 function handleAuthClick() {
+  let done = false;
+  if (gapi.client.getToken() != ''){done = true;
+  }else if (localStorage.getItem("google_token") != ''){
+    gapi.client.setToken(localStorage.getItem("google_token"));
+    done = true;
+  }
+  if (done){document.location.href = '/home.html';return;}
   tokenClient.callback = async (resp) => {
     if (resp.error !== undefined) {
       throw (resp);
     }
-    document.getElementById('signout_button').style.visibility = 'visible';
-    document.getElementById('authorize_button').innerText = 'Refresh';
     await makeFolder();
   };
   if (gapi.client.getToken() === null) {
@@ -15,6 +20,7 @@ function handleAuthClick() {
   } else {
     tokenClient.requestAccessToken({ prompt: '' });
   }
+  localStorage.setItem("google_token", gapi.client.getToken());
 }
 
 
