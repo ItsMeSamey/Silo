@@ -47,7 +47,7 @@ function gapiLoaded() {
       document.location.href = 'http://localhost:8080/index.html';
     }
   }
-}
+
 
 /**
   * Callback after Google Identity Services are loaded.
