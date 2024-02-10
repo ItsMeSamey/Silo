@@ -44,7 +44,7 @@ function gapiLoaded() {
       }
       else if (localStorage.getItem("google_token") == 'reg'){
         localStorage.setItem("google_token", 'null');
-        document.location.href = 'http://localhost:8080/index.html';
+//         document.location.href = 'http://localhost:8080/index.html';
       }
     }
   }
