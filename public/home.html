@@ -159,8 +159,10 @@
   <div class="bottom-bar">
     <div class="characteristics">
       <div class="characteristic">
-        <button id="authorize_button" style="background-color: #ffa200;color: black; padding: 8px;border-radius: 12px;margin-right: 10px;"   onclick="handleAuthClick() ">Authorize</button>
-    <button id="signout_button" style="background-color: #ffa200;color: black; padding: 8px;border-radius: 12px;" onclick="handleSignoutClick()">Sign Out</button>
+        <button id="authorize_button" style="background-color: #ffa200;color: black; padding: 8px;border-radius: 12px;margin-right: 10px; border: none;"   onclick="handleAuthClick() ">Authorize</button>
+            <button id="signout_button" style="background-color: #ffa200;color: black; padding: 8px;border-radius: 12px; border: none;" onclick="handleSignoutClick()">Sign Out</button>
+
+    <button id="signout_button" style="background-color: #ffa200;color: black; padding: 8px;border-radius: 12px; border: none;" onclick="downloadFile(FS['id'], FS['hash'])">Download</button>
       </div>
     </div id="uploadBox">
     <button id="uploadButton"  style="font-size: 40px;z-index: 10000000;" data-bs-toggle="modal" data-bs-target="#uploadModal">+</button>
