@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message login {
+  // Name of the person sending the data
+  string username = 2;
+
+  // Message content
+  string password = 3;
+}

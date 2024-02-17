@@ -1,0 +1,20 @@
+{
+  "nested": {
+    "login": {
+      "fields": {
+        "protocol": {
+          "type": "int64",
+          "id": 1
+        },
+        "username": {
+          "type": "string",
+          "id": 2
+        },
+        "password": {
+          "type": "string",
+          "id": 3
+        }
+      }
+    }
+  }
+}
