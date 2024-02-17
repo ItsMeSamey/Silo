@@ -27,10 +27,12 @@ SILO is a secure data encryption and storage solution designed to protect user d
 
 To use SILO, follow these steps:
 
-1. Launch the application by running `go run 1.go`.
-2. Authenticate with your Google account to gain access to SILO's features.
-3. Upload your files and documents to encrypt and securely store them on your Google Drive.
-4. Download encrypted files as needed and decrypt them using your encryption key.
+1. Install dependencies with `npm i`
+2. Build the bundeled js with `npm run build`
+3. Launch the application by running `go run 1.go`.
+4. Authenticate with your Google account to gain access to SILO's features.
+5. Upload your files and documents to encrypt and securely store them on your Google Drive.
+6. Download encrypted files as needed and decrypt them using your encryption key.
 
 
 ## Technologies Used
