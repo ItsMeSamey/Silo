@@ -1,32 +1,38 @@
-import { createSignal, createEffect } from 'solid-js'
+import { createSignal, createEffect, onMount } from 'solid-js'
 import './Login.css'
 import 'animate.css'
 import { token } from './google';
 import Setter from './index'
 
-let typeText = () => {
-  try{
-  const currentText = textArray[textIndex];
-  const typingElement = document.querySelector('.typing-text');
-  if (!isBackspacing) {
-    typingElement.textContent = currentText.substring(0, charIndex + 1);
-    charIndex++;
-    if (charIndex === currentText.length) {
-      isBackspacing = true;
-      setTimeout(typeText, 2000);
+const textArray = ['Safety', 'Security', 'Privacy', 'Storage'];
+let textIndex = 0;
+let charIndex = 0;
+let isBackspacing = false;
+
+function typeText() {
+  try {
+    const currentText = textArray[textIndex];
+    const typingElement = document.querySelector('.typing-text');
+    if (!isBackspacing) {
+      typingElement.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === currentText.length) {
+        isBackspacing = true;
+        setTimeout(typeText, 2000);
+      } else {
+        setTimeout(typeText, 150 * (2 * charIndex / currentText.length));
+      }
     } else {
-      setTimeout(typeText, 150 * (2 * charIndex / currentText.length));
+      typingElement.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isBackspacing = false;
+        textIndex = (textIndex + 1) % textArray.length;
+      }
+      setTimeout(typeText, 50 * (1.5 * charIndex / currentText.length) ** 4);
     }
-  } else {
-    typingElement.textContent = currentText.substring(0, charIndex - 1);
-    charIndex--;
-    if (charIndex === 0) {
-      isBackspacing = false;
-      textIndex = (textIndex + 1) % textArray.length;
-    }
-    setTimeout(typeText, 50 * (1.5 * charIndex / currentText.length) ** 4);
-  }}
-  catch{}
+  }
+  catch (e) { console.log(e) }
 }
 
 function handleAuthClick() {
@@ -34,7 +40,7 @@ function handleAuthClick() {
     if (resp.error !== undefined) {
       throw (resp);
     }
-    typeText = () => { }
+    //    typeText = () => { }
     console.log(token());
     Setter('Main');
   }
@@ -46,13 +52,9 @@ function handleAuthClick() {
 }
 
 function Login() {
-  document.addEventListener('DOMContentLoaded', function () {
-    const textArray = ['Safety', 'Security', 'Privacy', 'Storage'];
-    let textIndex = 0;
-    let charIndex = 0;
-    let isBackspacing = false;
+  onMount(() => {
     typeText();
-  });
+  })
 
   const [cl, setcl] = createSignal([]);
   createEffect(() => {
@@ -61,6 +63,7 @@ function Login() {
     }
   });
 
+  console.log(typeText)
   return (
     <div class='flex flex-row bg-black text-white'>
       <div class='king animate__animated animate__fadeIn mt-12' style={{ '--animate-duration': '2s' }}>
@@ -71,7 +74,7 @@ function Login() {
         </div>
       </div>
 
-      <div class='bg-white/10 p-20 rounded-lg text-center'>
+      <div class='p-20 rounded-lg text-center'>
         <h2 class='mt-6 text-2xl subpixel-antialiased font-[400]'>Login Page</h2>
         <button id='authorize_button'
           className={cl().length ? cl() : 'hover:bg-[#ffa20010] hover:shadow-orange-500/10'}

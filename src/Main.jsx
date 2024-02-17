@@ -178,12 +178,12 @@ function Table() {
         <thead>
           <tr>
             <th class='p-4 border-b bg-[#141416] bg-[#111113]'>
-              <p class='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
+              <p class='block font-sans text-sm antialiased font-normal leading-none text-white opacity-70'>
                 Name
               </p>
             </th>
             <th class='p-4 border-b bg-[#141416] bg-[#111113]'>
-              <p class='block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70'>
+              <p class='block font-sans text-sm antialiased font-normal leading-none text-white opacity-70'>
                 Id
               </p>
             </th>
@@ -193,16 +193,16 @@ function Table() {
           <For each={list()}>{(file) =>
             <tr
               data-ripple-dark='true'
-              class='will-change-transform hover:skew-x-2 duration-200 ease-in-out middle rounded-2xl text-center align-middle active:opacity-[0.8] active:scale-[.94] hover:rounded-full even:bg-[#121214] hover:scale-[.98] origin-center'
+              class='will-change-transform hover:skew-x-2 duration-200 ease-in-out middle rounded-2xl text-center align-middle active:opacity-[0.8] active:scale-[.94] hover:rounded-full even:bg-[#121214] hover:scale-[.99] origin-center'
               onclick={() => { downloadFile(file['id'], file['hash']) }}
             >
               <td class='p-4'>
-                <p class='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                <p class='block font-sans text-sm antialiased font-normal leading-normal'>
                   {file['name']}
                 </p>
               </td>
               <td class='p-4'>
-                <p class='block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900'>
+                <p class='block font-sans text-sm antialiased font-normal leading-normal'>
                   {file['id']}
                 </p>
               </td>
@@ -227,12 +227,12 @@ function Sidebar() {
   const buttonClasses = 'will-change-transform active:scale-[.93] select-none transition-all duration-200 flex items-center w-full p-3 leading-tight rounded-lg outline-none text-start hover:bg-[#201d1a] hover:bg-opacity-80 focus:text-blue-gray-900 active:bg-[#ffa200] active:bg-opacity-80 active:shadow-orange-500/50 shadow-2xl';
   return (
     <div
-      class='relative flex h-[100%] w-full max-w-[16rem] flex-col rounded-xl  bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5'>
+      class='relative flex h-[100%] w-full max-w-[16rem] flex-col rounded-xl  bg-clip-border p-4 shadow-xl shadow-blue-gray-900/5'>
       <div
         class="relative block text-4xl antialiased font-[150] leading-snug tracking-normal select-none items-center rounded-full bg-gradient-to-tr from-[#ffa20002] to-orange-500/25 mx-auto py-.5 px-2 uppercase text-white text-center">
         <span class="">Silo</span>
       </div>
-      <nav class='flex flex-col gap-1 p-2 font-sans text-base font-normal text-blue-gray-700'>
+      <nav class='flex flex-col gap-1 p-2 font-sans text-base font-normal '>
         <div role='button'
           onClick={() => Setter('Main')}
           className={page() == 'Main' ? 'bg-[#ffa200a4]' : ''}
@@ -340,7 +340,7 @@ function Sidebar() {
 
 function Main() {
   return (
-    <div class='flex flex-row absolute inset-y-0 inset-x-0 transition-all'>
+    <div class='flex flex-row absolute inset-y-0 inset-x-0 transition-all text-white'>
       <Sidebar />
       <Show when={page() == 'Main'} fallback>
         <Table />
