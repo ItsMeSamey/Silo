@@ -325,7 +325,7 @@ function Upload() {
               }
             })()
           }}
-          class='backdrop-brightness-75 animate__animated mx-2 transition-all active:scale-90 duration-100 active:bg-[#ffa200d7] active:shadow-orange-500/100 hover:bg-[#ffa2003f] hover:shadow-orange-500/10 hover:text-white bg-[#ffa2007a] shadow-xl shadow-orange-500/50 text-black rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center'
+          class='backdrop-brightness-75 animate__animated mx-2 transition-all active:scale-90 duration-100 active:bg-[#ffa200d7] active:shadow-orange-500/100 hover:bg-[#ffa2003f] hover:shadow-orange-500/10 hover:text-white bg-[#ffa2007a] active:shadow-xl shadow-orange-500/50 text-black rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center'
         >
           <Show when={up() === true} fallback>
             <label for="fileInput"
@@ -334,7 +334,7 @@ function Upload() {
               <input type="file" id='fileInput' className={fade() + "block file:hidden w-max/2 pl-4  text-auto text-center text-White border-[#3d3820] file:py-2 file:rounded-full file:border-0 file:text-[20px] file:bg-violet-950/10 file:text-yellow-700 hover:file:bg-yellow-900"} />
             </label>
           </Show>
-          <text className={(up() === true ? 'text-6xl bg-[#ffa20049] rounded-full px-3 mx-3 shadow-md shadow-inherit' : 'text-5xl') + ' non-italic font-[200]'}>
+          <text className={(up() === true ? 'text-6xl bg-[#ffa20049] rounded-full px-3 mx-3 shadow-md shadow-inherit' : 'text-4xl') + ' non-italic font-[200]'}>
             {up() === true ? '↑' : 'Upload'}
           </text>
         </div>
@@ -394,7 +394,6 @@ function Main() {
           <Table />
         </Show>
         <Upload />
-
       </div>
     </div>
   );
