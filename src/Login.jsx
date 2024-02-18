@@ -65,7 +65,7 @@ function Login() {
 
   console.log(typeText)
   return (
-    <div class='flex flex-row bg-black text-white'>
+    <div class='flex flex-row bg-black text-white mt-[25%]'>
       <div class='king animate__animated animate__fadeIn mt-12' style={{ '--animate-duration': '2s' }}>
         <h1 class='margin-right-60 text-7xl subpixel-antialiased font-[150] mb-20'> WELCOME TO SILO </h1>
         <div class='mainin flex'>
@@ -77,9 +77,9 @@ function Login() {
       <div class='p-20 rounded-lg text-center'>
         <h2 class='mt-6 text-2xl subpixel-antialiased font-[400]'>Login Page</h2>
         <button id='authorize_button'
-          className={cl().length ? cl() : 'hover:bg-[#ffa20010] hover:shadow-orange-500/10'}
-          onClick={() => { setcl(['transition hover:scale-90 duration-100 hover:bg-[#ffa200] hover:shadow-orange-500/100']); handleAuthClick() }}
-          class='animate__animated mt-12 mb-24 bg-[#ffa200] shadow-xl shadow-orange-500/50 text-black py-2 px-8 rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center hover:text-white transition-all duration-700'
+          className={cl().length ? cl() : ''}
+          onClick={() => { handleAuthClick() }}
+          class='duration-[400] hover:bg-[#ffa20010] active:scale-[.90] active:bg-[#ffa200] active:shadow-orange-500/100 hover:shadow-orange-500/10 mt-12 mb-24 bg-[#ffa200] shadow-xl shadow-orange-500/50 text-black py-2 px-8 rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center hover:text-white transition-all'
         >
           <div class='google-icon'>
             <svg class='google-icon' alt='Google Icon' enable-background='new 0 0 48 48' height='48' viewBox='0 0 48 48' width='48' xmlns='http://www.w3.org/2000/svg'>
