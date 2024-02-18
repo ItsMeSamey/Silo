@@ -1,6 +1,5 @@
 import { render } from 'solid-js/web';
 import { For, onMount, createSignal, createResource, createEffect } from "solid-js";
-// import styles from 'rippleui/dist/css/styles.css'
 
 import App from './App';
 import Login from './Login';
@@ -21,9 +20,11 @@ render(() => {
     Loader();
   });
   return (
-    <Show when={page() == 'Login'} fallback={<Main />}>
-      <Login />
-    </Show>
+    <>
+      <Show when={page() == 'Login'} fallback={<Main />}>
+        <Login />
+      </Show>
+    </>
   )
 }, document.getElementById('root'))
 
