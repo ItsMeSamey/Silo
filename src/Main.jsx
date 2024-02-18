@@ -12,7 +12,7 @@ let FILES = [];
 let PASSWORD = 'oxox';
 const [list, setList] = createSignal(
   [
-    { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }
+    //{ 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }, { 'name': 'Temp2', 'id': 'dasdqwdhavsdbjabshldjadbshliashds' }
   ]
 )
 
@@ -136,19 +136,24 @@ async function uploadFile() {
 }
 
 async function downloadFile(id, hash) {
-  console.log(id)
-  return
   gapi.client.drive.files.get({
     fileId: id,
-    alt: 'media'
+    alt: "media"
   }).then(function (res) {
     let file = decrypt(res.body, hash, false);
     const blob = new Blob([file], { type: 'text/plain' });
 
     const url = URL.createObjectURL(blob);
+
+    const link = document.createElement('a');
     link.href = url;
+
     link.download = 'variable.txt';
+
+    document.body.appendChild(link);
     link.click();
+
+    document.body.removeChild(link);
     URL.revokeObjectURL(url);
   });
 }
@@ -311,6 +316,7 @@ function Upload() {
           onclick={() => {
             up() === false ? setUp(true) : (() => {
               if (document.getElementById('fileInput').files.length == true) {
+                uploadFile();
                 setFade('animate__fadeOutUp'); setTimeout(() => {
                   setUp(false)
                   setFade('animate__fadeIn')
@@ -327,8 +333,8 @@ function Upload() {
               <input type="file" id='fileInput' className={fade() + "block file:hidden w-max/2 pl-4  text-auto text-center text-White border-[#3d3820] file:py-2 file:rounded-full file:border-0 file:text-[20px] file:bg-violet-950/10 file:text-yellow-700 hover:file:bg-yellow-900"} />
             </label>
           </Show>
-          <text className={(up()===true ? 'text-6xl bg-[#ffa20049] rounded-full px-3 mx-3 shadow-md shadow-inherit' : 'text-5xl' ) + ' non-italic font-[200]'}>
-            {up()===true ? '↑' : 'Upload'}
+          <text className={(up() === true ? 'text-6xl bg-[#ffa20049] rounded-full px-3 mx-3 shadow-md shadow-inherit' : 'text-5xl') + ' non-italic font-[200]'}>
+            {up() === true ? '↑' : 'Upload'}
           </text>
         </div>
       </div>
@@ -377,7 +383,6 @@ function Table() {
     </div>
   )
 }
-
 
 function Main() {
   return (
