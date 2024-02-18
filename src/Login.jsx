@@ -65,7 +65,7 @@ function Login() {
 
   console.log(typeText)
   return (
-    <div class='flex flex-row bg-black text-white mt-[25%]'>
+    <div class='flex flex-row bg-black text-white mt-[15%]'>
       <div class='king animate__animated animate__fadeIn mt-12' style={{ '--animate-duration': '2s' }}>
         <h1 class='margin-right-60 text-7xl subpixel-antialiased font-[150] mb-20'> WELCOME TO SILO </h1>
         <div class='mainin flex'>
