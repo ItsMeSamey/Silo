@@ -316,11 +316,12 @@ function Upload() {
           onclick={() => {
             up() === false ? setUp(true) : (() => {
               if (document.getElementById('fileInput').files.length == true) {
-                uploadFile();
                 setFade('animate__fadeOutUp'); setTimeout(() => {
                   setUp(false)
                   setFade('animate__fadeIn')
                 }, 250)
+                uploadFile();
+
               }
             })()
           }}
