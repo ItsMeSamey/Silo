@@ -294,52 +294,42 @@ function Upload() {
   const [up, setUp] = createSignal(false)// justify-center content-center object-center snap-center self-center
   const [fade, setFade] = createSignal('animate__fadeIn')// justify-center content-center object-center snap-center self-center
   return (
-    <div class='select-none absolute will-change-transform transition-all duration-500 end-6 bottom-8 flex'>
-      <div className={'flex flex-col items-center justify-center w-full'}>
-        <Show when={up() === true} fallback>
-          <label for="fileInput"
-            className={fade()}
-            class="animate__animated  mb-5 flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-              <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-              </svg>
-              <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-            </div>
-            <input id="fileInput" type="file" class="hidden" />
-          </label>
-        </Show>
-        <div class='flex flex-row'>
-          <Show when={up() === true} fallback>
-            <button
-              className={(fade()==='animate__fadeOutUp' ? 'animate__fadeOut' : fade())  + ' animate__animated mx-2 transition active:scale-90 duration-100 active:bg-[#ff5100d7] active:shadow-red-500/100 hover:bg-[#ff08003f] hover:shadow-red-500/10 hover:text-white'}
-              onClick={() => {
-                setFade('animate__fadeOut'); setTimeout(() => {
+    <div class='select-none absolute will-change-transform transition-all duration-500 end-6 bottom-8 flex flex-col'>
+      <div className={''}>
+        <div
+          className={up() === false ? 'px-4 py-2' : 'py-2'}
+          onmouseover={() => {
+            setUp(true)
+          }}
+          onmouseleave={() => {
+            up() === false ? setUp(true) : (() => {
+              if (document.getElementById('fileInput').files.length == false) {
+                setUp(false)
+              }
+            })()
+          }}
+          onclick={() => {
+            up() === false ? setUp(true) : (() => {
+              if (document.getElementById('fileInput').files.length == true) {
+                setFade('animate__fadeOutUp'); setTimeout(() => {
                   setUp(false)
                   setFade('animate__fadeIn')
-                }, 500);
-              }}
-              class='backdrop-brightness-75 animate__animated bg-[#ff51007a] shadow-xl shadow-red-500/50 text-black py-2 px-6 rounded-xl border border-red-600/10 font-semibold cursor-pointer flex justify-center items-center'
-            >
-              <text class='non-italic text-3xl font-[200]'>
-                Cancel
-              </text>
-            </button>
+                }, 250)
+              }
+            })()
+          }}
+          class='backdrop-brightness-75 animate__animated mx-2 transition-all active:scale-90 duration-100 active:bg-[#ffa200d7] active:shadow-orange-500/100 hover:bg-[#ffa2003f] hover:shadow-orange-500/10 hover:text-white bg-[#ffa2007a] shadow-xl shadow-orange-500/50 text-black rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center'
+        >
+          <Show when={up() === true} fallback>
+            <label for="fileInput"
+              className={fade()}
+              class="animate__animated flex flex-col items-center justify-center w-full h-auto border-none rounded-lg cursor-pointer bg-none-50 pr-2">
+              <input type="file" id='fileInput' className={fade() + "block file:hidden w-max/2 pl-4  text-auto text-center text-White border-[#3d3820] file:py-2 file:rounded-full file:border-0 file:text-[20px] file:bg-violet-950/10 file:text-yellow-700 hover:file:bg-yellow-900"} />
+            </label>
           </Show>
-          <button
-            className={'mx-2 transition active:scale-90 duration-100 active:bg-[#ffa200d7] active:shadow-orange-500/100 hover:bg-[#ffa2003f] hover:shadow-orange-500/10 hover:text-white'}
-            onClick={() => {
-              up() === false ? setUp(true) : (()=>{setFade('animate__fadeOutUp'); setTimeout(() => {
-                setUp(false)
-                setFade('animate__fadeIn')
-              }, 500)})()
-            }}
-            class='backdrop-brightness-75 animate__animated bg-[#ffa2007a] shadow-xl shadow-orange-500/50 text-black py-2 px-6 rounded-xl border border-orange-600/10 font-semibold cursor-pointer flex justify-center items-center'
-          >
-            <text class='non-italic text-3xl font-[200]'>
-              Upload
-            </text>
-          </button>
+          <text className={(up()===true ? 'text-6xl bg-[#ffa20049] rounded-full px-3 mx-3 shadow-md shadow-inherit' : 'text-5xl' ) + ' non-italic font-[200]'}>
+            {up()===true ? '↑' : 'Upload'}
+          </text>
         </div>
       </div>
     </div>
