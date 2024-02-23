@@ -195,6 +195,7 @@ function Sidebar() {
         class="relative block text-4xl antialiased font-[150] leading-snug tracking-normal select-none items-center rounded-full bg-gradient-to-tr from-[#ffa20002] to-orange-500/25 mx-auto py-.5 px-2 uppercase text-white text-center">
         <span class="">Silo</span>
       </div>
+      <br />
       <nav class='flex flex-col gap-1 p-2 font-sans text-base font-normal '>
         <div role='button'
           onClick={() => Setter('Main')}
@@ -270,6 +271,7 @@ function Sidebar() {
           </div>
           Settings
         </div>
+        <br /><hr /><br />
         <div role='button'
           onClick={() => {
             Setter('Login'); const token = gapi.client.getToken();
@@ -400,4 +402,8 @@ function Main() {
 }
 
 export default Main
+
+
+
+
 
