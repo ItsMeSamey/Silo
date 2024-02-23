@@ -352,13 +352,18 @@ function Table() {
         <thead class='text-center justify-center w-full'>
           <tr class=''>
             <th class='p-4 border-b bg-[#141416] bg-[#111113]'>
-              <p class='block font-sans text-sm antialiased font-normal leading-none text-white opacity-70'>
+              <p class='block font-sans text-m antialiased font-normal leading-none text-white opacity-70'>
                 Name
               </p>
             </th>
             <th class='p-4 border-b bg-[#141416] bg-[#111113]'>
-              <p class='block font-sans text-sm antialiased font-normal leading-none text-white opacity-70'>
-                Id
+              <p class='block font-sans text-m antialiased font-normal leading-none text-white opacity-70'>
+                Size
+              </p>
+            </th>
+            <th class='p-4 border-b bg-[#141416] bg-[#111113]'>
+              <p class='block font-sans text-m antialiased font-normal leading-none text-white opacity-70'>
+                Upload Time
               </p>
             </th>
           </tr>
@@ -374,9 +379,15 @@ function Table() {
                   {file['name']}
                 </p>
               </td>
+              
               <td class='p-4'>
                 <p class='block font-sans text-sm antialiased font-normal leading-normal'>
-                  {file['id']}
+                  {file['usize:TODO']}
+                </p>
+              </td>
+              <td class='p-4'>
+                <p class='block font-sans text-sm antialiased font-normal leading-normal'>
+                  {file['utime:TODO']}
                 </p>
               </td>
             </tr>
